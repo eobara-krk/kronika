@@ -157,11 +157,23 @@
 
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
+          <!-- linki z URL -->
           <a class="pill" *ngIf="link.url" [href]="link.url" target="_blank" rel="noopener">{{ link.name }}</a>
-          <button class="pill" *ngIf="link.text" (click)="toggle(link)">{{ link.name }}</button>
+
+          <!-- przyciski dla tekstu lub chronionych podsumowań -->
+          <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
+            {{ link.name }}
+          </button>
+
+          <!-- pokaz tekstu tylko jeśli show=true -->
           <p *ngIf="link.show">{{ link.text }}</p>
         </ng-container>
       </div>
+    </div>
+
+    <!-- PRZYCISK ZAMKNIJ STRONĘ -->
+    <div style="margin-top: 1rem; text-align: center;">
+      <button class="pill" (click)="closePage()">Zamknij stronę</button>
     </div>
   </div>
 </main>
