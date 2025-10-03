@@ -101,7 +101,7 @@ Tak było!
   ];
 
     // hasło do odczytu chronionych podsumowań
-  private readonly summaryPassword = 'ela';
+  private readonly summaryPassword = 'syn';
 
   toggle(item: any) {
     item.show = !item.show;
