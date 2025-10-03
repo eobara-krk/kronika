@@ -17,6 +17,11 @@ export class AppComponent {
       show: false,
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1dljUMxwhUrTb6Lf3_0UkFojdKVJB5nnC/view?usp=sharing'},
+        { name: 'Film 2', url:'https://drive.google.com/file/d/13k6eLd7Y_MZc-MkM41DMlPDD_bthFj9K/view?usp=sharing'},
+        { name: 'Film 3', url:'https://drive.google.com/file/d/1VvEk7og9-WByuMJ58SpiJ61f-Ne3Ghob/view?usp=sharing'},
+        { name: 'Film 4', url:'https://drive.google.com/file/d/1RK8PA186Xwu5oaZml1LrWQuvTec6JKgQ/view?usp=sharing'},
+        { name: 'Film 5', url:'https://drive.google.com/file/d/1w7P9LdDiJWidmBUBBaI4MJ0gNZg0KR1t/view?usp=sharing'},
+        { name: 'Film 6', url:'https://drive.google.com/file/d/1V7lzHGPqG9tDR_wqnCW-HoVVL4IJFotQ/view?usp=sharing'},
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/6zoDJrG4TM8fte5y6' }
       ]
     },
