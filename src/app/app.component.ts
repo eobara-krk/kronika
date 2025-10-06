@@ -10,8 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentAlbum: string | null = null;
-
   items = [
     { 
       title: 'Lewin Kłodzki rekolekcje (różne lata)', 
@@ -99,13 +97,16 @@ Tak było!
     }
   ];
 
-  private readonly summaryPassword = 'syn';
+ private readonly summaryPassword = 'syn';
 
-  // --- FUNKCJA OTWIERANIA ALBUMÓW LUB LINKÓW ---
   openLink(link: any) {
-    // Wszystkie linki otwieramy w nowej karcie
     if (link.url) {
-      window.open(link.url, '_blank');
+      if (link.url.includes('photos.app.goo.gl')) {
+        window.open(link.url, '_blank');
+        alert('Album otwarty w nowej karcie. Po obejrzeniu kliknij w przeglądarce "Wróć" do kroniki.'); 
+      } else {
+        window.open(link.url, '_blank');
+      }
     }
   }
 

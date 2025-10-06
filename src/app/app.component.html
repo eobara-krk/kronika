@@ -184,7 +184,7 @@
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
 
-          <!-- LINKI -->
+          <!-- LINKI: FILMY I ALBUMY (OTWIERANE W NOWEJ KARCIE) -->
           <button class="pill" 
                   *ngIf="link.url" 
                   (click)="openLink(link)">
