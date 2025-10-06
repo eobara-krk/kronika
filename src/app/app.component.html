@@ -185,18 +185,22 @@
 
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
-          <!-- LINKI: FILMY I ALBUMY -->
+
+          <!-- BUTTON DO LINKÓW AUDIO I FILMÓW/ALBUMÓW -->
           <button class="pill" *ngIf="link.url" (click)="openLink(link)">
             {{ link.name }}
           </button>
 
-          <!-- LINKI TEKSTOWE / CHRONIONE -->
+          <!-- BUTTON DLA TEKSTÓW CHRONIONYCH -->
           <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
             {{ link.name }}
           </button>
 
-          <!-- POKAŻ TEKST -->
-          <p *ngIf="link.show">{{ link.text }}</p>
+          <!-- WYŚWIETLANIE CHRONIONEGO TEKSTU -->
+          <div *ngIf="link.show && link.text" class="event-description">
+            <pre style="white-space: pre-wrap;">{{ link?.text }}</pre>
+          </div>
+
         </ng-container>
       </div>
     </div>

@@ -2,6 +2,23 @@ import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+// Typy dla linków i itemów
+interface Link {
+  name: string;
+  url?: string;
+  text?: string;
+  protected?: boolean;
+  show?: boolean;
+  type?: string;
+}
+
+interface Item {
+  title: string;
+  show: boolean;
+  links: Link[];
+}
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,7 +27,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  items = [
+  items: Item[] = [
     { 
       title: 'Lewin Kłodzki rekolekcje (różne lata)', 
       show: false,
@@ -65,6 +82,8 @@ export class AppComponent {
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1TY18uyg7ezf_PDijkkJl4d84F9i2nuQP/view?usp=sharing'},
         { name: 'Film 2', url:'https://drive.google.com/file/d/1-Swnw1Rii9jnHi4bUQwPG2G-sMYlQ90_/view?usp=sharing'},
+        { name: 'Nagranie audio 1', url: 'https://drive.google.com/file/d/1qOkjFDxj_uEUAu151nEUpAcN48DWF0Qd/view?usp=sharing', type: 'audio' },
+        { name: 'Nagranie audio 2', url: 'https://drive.google.com/file/d/1D6LsYy3UbIfLP4zNg6UsQTCZxvrE66RU/view?usp=sharing', type: 'audio' },
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/x7qcuRwbpNFf89q76'}
       ]
     },
@@ -109,19 +128,38 @@ Tak było!
  private readonly summaryPassword = 'syn';
 
   // --- OTWIERANIE LINKÓW ---
-openLink(link: any) {
-  if (!link.url) return;
-  window.open(link.url, '_blank');
-}
+  openLink(link: Link) {
+    if (!link.url) return;
 
+    // jeśli link kończy się na .m4a, otwórz w nowym oknie z odtwarzaczem
+    if (link.url.endsWith('.m4a')) {
+      const audioWindow = window.open('', '_blank');
+      if (audioWindow) {
+        audioWindow.document.write(`
+          <html>
+            <body style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;">
+              <h3>${link.name}</h3>
+              <audio controls autoplay style="width:90%;">
+                <source src="${link.url}" type="audio/mp4">
+              </audio>
+            </body>
+          </html>
+        `);
+        audioWindow.document.close();
+      }
+    } else {
+      // zwykły link do filmu/albumu
+      window.open(link.url, '_blank');
+    }
+  }
 
   // --- ROZWIJANIE EVENTÓW ---
-  toggle(item: any) {
+  toggle(item: Item) {
     item.show = !item.show;
   }
 
   // --- CHRONIONE TEKSTY ---
-  toggleLink(link: any) {
+  toggleLink(link: Link) {
     if (link.protected) {
       if (!link.show) {
         const password = prompt('Podaj hasło, aby odczytać podsumowanie:');
@@ -136,11 +174,11 @@ openLink(link: any) {
     }
   }
 
-  trackByTitle(index: number, item: any) {
+  trackByTitle(index: number, item: Item) {
     return item.title;
   }
 
-  trackByName(index: number, link: any) {
+  trackByName(index: number, link: Link) {
     return link.name;
   }
 
