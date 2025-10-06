@@ -82,8 +82,8 @@ export class AppComponent {
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1TY18uyg7ezf_PDijkkJl4d84F9i2nuQP/view?usp=sharing'},
         { name: 'Film 2', url:'https://drive.google.com/file/d/1-Swnw1Rii9jnHi4bUQwPG2G-sMYlQ90_/view?usp=sharing'},
-        { name: 'Nagranie audio 1', url: 'https://drive.google.com/file/d/1qOkjFDxj_uEUAu151nEUpAcN48DWF0Qd/view?usp=sharing', type: 'audio' },
-        { name: 'Nagranie audio 2', url: 'https://drive.google.com/file/d/1D6LsYy3UbIfLP4zNg6UsQTCZxvrE66RU/view?usp=sharing', type: 'audio' },
+        { name: 'Nagranie audio 1', url: 'https://drive.google.com/file/d/1a4K1HMlxAA6pi1LoZck_mU7Pfql_FxMT/view?usp=sharing', type: 'audio' },
+        { name: 'Nagranie audio 2', url: 'https://drive.google.com/file/d/1F7QjFfPsNd0nHXJSyyoTv4tb8XJrRiQl/view?usp=sharing', type: 'audio' },
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/x7qcuRwbpNFf89q76'}
       ]
     },
