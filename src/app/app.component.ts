@@ -89,7 +89,7 @@ Tak było!
       ]
     }, 
     { 
-      title: 'Spotkania różne 2025', 
+      title: 'Spotkania różne (2025 r.)', 
       show: false,
       links: [
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/24qSGVTj46433Xt46' }
