@@ -10,8 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // link do aktualnie otwartego albumu już niepotrzebny
-  // currentAlbum: string | null = null;
+  currentAlbum: string | null = null;
 
   items = [
     { 
@@ -102,7 +101,16 @@ Tak było!
 
   private readonly summaryPassword = 'syn';
 
-  toggle(item: any) {
+    // --- DODANE FUNKCJE DO OTWIERANIA/ZAMYKANIA ALBUMU ---
+  openAlbum(link: any) {
+    this.currentAlbum = link.url;
+  }
+
+  closeAlbum() {
+    this.currentAlbum = null;
+  }
+
+    toggle(item: any) {
     item.show = !item.show;
   }
 
