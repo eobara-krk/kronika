@@ -100,18 +100,11 @@ Tak było!
  private readonly summaryPassword = 'syn';
 
   // --- OTWIERANIE LINKÓW ---
-  openLink(link: any) {
-    if (!link.url) return;
+openLink(link: any) {
+  if (!link.url) return;
+  window.open(link.url, '_blank');
+}
 
-    if (link.url.includes('photos.app.goo.gl')) {
-      // Album Google Photos w nowej karcie
-      window.open(link.url, '_blank');
-      alert('Album otwarty w nowej karcie. Po obejrzeniu kliknij w przeglądarce "Wróć" do kroniki.');
-    } else {
-      // Filmy i inne linki też w nowej karcie
-      window.open(link.url, '_blank');
-    }
-  }
 
   // --- ROZWIJANIE EVENTÓW ---
   toggle(item: any) {
