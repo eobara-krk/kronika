@@ -157,8 +157,16 @@
 
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
+
           <!-- linki z URL -->
-          <a class="pill" *ngIf="link.url" [href]="link.url" target="_blank" rel="noopener">{{ link.name }}</a>
+          <!-- DODANE: wszystkie albumy otwierają się w nowej karcie -->
+          <a class="pill" 
+             *ngIf="link.url && !link.protected" 
+             [href]="link.url" 
+             target="_blank" 
+             rel="noopener">
+            {{ link.name }}
+          </a>
 
           <!-- przyciski dla tekstu lub chronionych podsumowań -->
           <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">

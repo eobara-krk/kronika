@@ -10,9 +10,11 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  items = [
+  // link do aktualnie otwartego albumu już niepotrzebny
+  // currentAlbum: string | null = null;
 
- { 
+  items = [
+    { 
       title: 'Lewin Kłodzki rekolekcje (różne lata)', 
       show: false,
       links: [
@@ -25,9 +27,8 @@ export class AppComponent {
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/6zoDJrG4TM8fte5y6' }
       ]
     },
-
     { 
-      title: '2025-06-19 Wniebogłosy', 
+      title: 'Wniebogłosy (2025 r.)', 
       show: false,
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1RD5D9Op3MbeZHNNukB8idsmLiLOQyHix/view?usp=sharing'},
@@ -49,7 +50,7 @@ export class AppComponent {
       ]
     },
     { 
-      title: '2025 Częstochowa rekolekcje', 
+      title: 'Częstochowa rekolekcje (2025 r.)', 
       show: false,
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1xCTxLX8MxScZwr8h99BRUCKIG_ARZFnv/view?usp=sharing'},
@@ -62,21 +63,13 @@ export class AppComponent {
       ]
     },
     { 
-      title: '2025 Spotkanie w Kiełczowie', 
+      title: 'Spotkania w salce (2025 r.)', 
       show: false,
       links: [
-        { name: 'Album zdjeć', url: 'https://photos.app.goo.gl/24qSGVTj46433Xt46' }
-      ]
-    },
-    { 
-      title: '2025 wrzesień 30', 
-      show: false,
-      links: [
-        { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/hQyN3K1tTqvJrxAs9' },
-        
-{
-  name: 'Podsumowanie spotkania',
-  text: `
+        { name: 'Album zdjęć (30 IX)', url: 'https://photos.app.goo.gl/hQyN3K1tTqvJrxAs9' },
+        {
+          name: 'Podsumowanie spotkania (30 IX)',
+          text: `
 A było to dnia dzisiejszego, kiedy po mszy świętej zgromadziła się nasza czcigodna wspólnota w skromnej, aczkolwiek wonnej salce parafialnej.
 Na wstępie ksiądz proboszcz, jako pasterz surowy, rzekł do nas słowa karcenia:  
 „Czemuż to drzwi otwarte, a okna rozwiane, skoro na dworze ziąb, a w salce klimat jak w piwnicy średniowiecznej?”.  
@@ -93,37 +86,40 @@ Choć święci patrzyli z politowaniem, my z radością dopasowywaliśmy stroje 
 🏡 Gdy wszystkie sprawy doczesne i duchowe zostały dokonane, rozeszliśmy się w pokoju do domów swoich, zostawiając salkę z jej zapachem i wspomnieniem słodkiej agapy 🍰.
 Tak było!
 `,
-  show: false,
-  protected: true // dodajemy flagę chronionego tekstu
-}
+          show: false,
+          protected: true
+        }
+      ]
+    }, 
+    { 
+      title: 'Spotkania różne 2025', 
+      show: false,
+      links: [
+        { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/24qSGVTj46433Xt46' }
       ]
     }
   ];
 
-    // hasło do odczytu chronionych podsumowań
   private readonly summaryPassword = 'syn';
 
   toggle(item: any) {
     item.show = !item.show;
   }
 
-toggleLink(link: any) {
-  // jeśli link jest chroniony
-  if (link.protected) {
-    if (!link.show) { // jeśli jeszcze nie odblokowany
-      const password = prompt('Podaj hasło, aby odczytać podsumowanie:');
-      if (password === this.summaryPassword) {
-        link.show = true; // odblokowujemy
-      } else {
-        alert('Błędne hasło!');
+  toggleLink(link: any) {
+    if (link.protected) {
+      if (!link.show) {
+        const password = prompt('Podaj hasło, aby odczytać podsumowanie:');
+        if (password === this.summaryPassword) {
+          link.show = true;
+        } else {
+          alert('Błędne hasło!');
+        }
       }
+    } else {
+      link.show = !link.show;
     }
-  } else {
-    // zwykłe działanie dla linków niechronionych
-    link.show = !link.show;
   }
-}
-
 
   trackByTitle(index: number, item: any) {
     return item.title;
@@ -134,7 +130,6 @@ toggleLink(link: any) {
   }
 
   closePage() {
-  window.close();
-}
-
+    window.close();
+  }
 }
