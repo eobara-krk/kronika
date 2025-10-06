@@ -101,16 +101,15 @@ Tak było!
 
   private readonly summaryPassword = 'syn';
 
-    // --- DODANE FUNKCJE DO OTWIERANIA/ZAMYKANIA ALBUMU ---
-  openAlbum(link: any) {
-    this.currentAlbum = link.url;
+  // --- FUNKCJA OTWIERANIA ALBUMÓW LUB LINKÓW ---
+  openLink(link: any) {
+    // Wszystkie linki otwieramy w nowej karcie
+    if (link.url) {
+      window.open(link.url, '_blank');
+    }
   }
 
-  closeAlbum() {
-    this.currentAlbum = null;
-  }
-
-    toggle(item: any) {
+  toggle(item: any) {
     item.show = !item.show;
   }
 

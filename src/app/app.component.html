@@ -136,6 +136,32 @@
       padding-left: 0.25rem;
     }
   }
+
+  /* ------------------ NOWY CSS dla overlay albumu ------------------ */
+  .album-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 9999;
+  }
+
+  .album-overlay iframe {
+    width: 80%;
+    height: 80%;
+    border-radius: 12px;
+  }
+
+  .album-overlay .pill {
+    margin-bottom: 1rem;
+  }
 </style>
 
 <main>
@@ -158,22 +184,19 @@
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
 
-          <!-- linki z URL -->
-          <!-- DODANE: wszystkie albumy otwierają się w nowej karcie -->
-          <a class="pill" 
-             *ngIf="link.url && !link.protected" 
-             [href]="link.url" 
-             target="_blank" 
-             rel="noopener">
+          <!-- LINKI -->
+          <button class="pill" 
+                  *ngIf="link.url" 
+                  (click)="openLink(link)">
             {{ link.name }}
-          </a>
+          </button>
 
-          <!-- przyciski dla tekstu lub chronionych podsumowań -->
+          <!-- LINKI TEKSTOWE / CHRONIONE -->
           <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
             {{ link.name }}
           </button>
 
-          <!-- pokaz tekstu tylko jeśli show=true -->
+          <!-- POKAŻ TEKST -->
           <p *ngIf="link.show">{{ link.text }}</p>
         </ng-container>
       </div>
