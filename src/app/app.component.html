@@ -154,13 +154,15 @@
   }
 
   .album-overlay iframe {
-    width: 80%;
+    width: 90%;
     height: 80%;
     border-radius: 12px;
   }
 
   .album-overlay .pill {
     margin-bottom: 1rem;
+    background: var(--pink);
+    color: #fff;
   }
 </style>
 
@@ -183,11 +185,8 @@
 
       <div class="pill-group" *ngIf="item.show">
         <ng-container *ngFor="let link of item.links; trackBy: trackByName">
-
-          <!-- LINKI: FILMY I ALBUMY (OTWIERANE W NOWEJ KARCIE) -->
-          <button class="pill" 
-                  *ngIf="link.url" 
-                  (click)="openLink(link)">
+          <!-- LINKI: FILMY I ALBUMY -->
+          <button class="pill" *ngIf="link.url" (click)="openLink(link)">
             {{ link.name }}
           </button>
 
@@ -208,5 +207,3 @@
     </div>
   </div>
 </main>
-
-<router-outlet></router-outlet>

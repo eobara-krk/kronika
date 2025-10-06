@@ -99,21 +99,26 @@ Tak było!
 
  private readonly summaryPassword = 'syn';
 
+  // --- OTWIERANIE LINKÓW ---
   openLink(link: any) {
-    if (link.url) {
-      if (link.url.includes('photos.app.goo.gl')) {
-        window.open(link.url, '_blank');
-        alert('Album otwarty w nowej karcie. Po obejrzeniu kliknij w przeglądarce "Wróć" do kroniki.'); 
-      } else {
-        window.open(link.url, '_blank');
-      }
+    if (!link.url) return;
+
+    if (link.url.includes('photos.app.goo.gl')) {
+      // Album Google Photos w nowej karcie
+      window.open(link.url, '_blank');
+      alert('Album otwarty w nowej karcie. Po obejrzeniu kliknij w przeglądarce "Wróć" do kroniki.');
+    } else {
+      // Filmy i inne linki też w nowej karcie
+      window.open(link.url, '_blank');
     }
   }
 
+  // --- ROZWIJANIE EVENTÓW ---
   toggle(item: any) {
     item.show = !item.show;
   }
 
+  // --- CHRONIONE TEKSTY ---
   toggleLink(link: any) {
     if (link.protected) {
       if (!link.show) {
