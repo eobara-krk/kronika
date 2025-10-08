@@ -183,25 +183,57 @@
         <span>{{ item.show ? '▲' : '▼' }}</span>
       </div>
 
+      <!-- DRZEWKO DLA SPOTKAŃ -->
       <div class="pill-group" *ngIf="item.show">
-        <ng-container *ngFor="let link of item.links; trackBy: trackByName">
 
-          <!-- BUTTON DO LINKÓW AUDIO I FILMÓW/ALBUMÓW -->
-          <button class="pill" *ngIf="link.url" (click)="openLink(link)">
-            {{ link.name }}
-          </button>
+        <!-- Spotkania z podziałem na daty -->
+        <ng-container *ngIf="item.meetings">
+          <div *ngFor="let meeting of item.meetings" class="event-card meeting-card" style="margin-left: 1rem;">
+            <div class="event-header" (click)="toggle(meeting)">
+              <span>🗓 {{ meeting.date }}</span>
+              <span>{{ meeting.show ? '▲' : '▼' }}</span>
+            </div>
 
-          <!-- BUTTON DLA TEKSTÓW CHRONIONYCH -->
-          <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
-            {{ link.name }}
-          </button>
+            <div class="pill-group link-group" *ngIf="meeting.show">
+              <ng-container *ngFor="let link of meeting.links; trackBy: trackByName">
 
-          <!-- WYŚWIETLANIE CHRONIONEGO TEKSTU -->
-          <div *ngIf="link.show && link.text" class="event-description">
-            <pre style="white-space: pre-wrap;">{{ link?.text }}</pre>
+                <!-- BUTTON DO LINKÓW AUDIO I FILMÓW/ALBUMÓW -->
+                <button class="pill" *ngIf="link.url" (click)="openLink(link)">
+                  {{ link.name }}
+                </button>
+
+                <!-- BUTTON DLA TEKSTÓW CHRONIONYCH -->
+                <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
+                  {{ link.name }}
+                </button>
+
+                <!-- WYŚWIETLANIE CHRONIONEGO TEKSTU -->
+                <div *ngIf="link.show && link.text" class="event-description">
+                  <pre style="white-space: pre-wrap;">{{ link?.text }}</pre>
+                </div>
+
+              </ng-container>
+            </div>
           </div>
-
         </ng-container>
+
+        <!-- Zwykłe linki (bez spotkań) -->
+        <ng-container *ngIf="item.links">
+          <ng-container *ngFor="let link of item.links; trackBy: trackByName">
+            <button class="pill" *ngIf="link.url" (click)="openLink(link)">
+              {{ link.name }}
+            </button>
+
+            <button class="pill" *ngIf="link.text || link.protected" (click)="toggleLink(link)">
+              {{ link.name }}
+            </button>
+
+            <div *ngIf="link.show && link.text" class="event-description">
+              <pre style="white-space: pre-wrap;">{{ link?.text }}</pre>
+            </div>
+          </ng-container>
+        </ng-container>
+
       </div>
     </div>
 

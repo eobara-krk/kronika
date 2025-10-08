@@ -12,10 +12,18 @@ interface Link {
   type?: string;
 }
 
+interface Meeting {
+  date: string;
+  show: boolean;
+  links?: Link[];     // dla zwykłych sekcji
+  meetings?: Meeting[]; // dla spotkań z podziałem na daty
+}
+
 interface Item {
   title: string;
   show: boolean;
-  links: Link[];
+  links?: Link[];
+  meetings?: Meeting[];
 }
 
 
@@ -42,7 +50,7 @@ export class AppComponent {
       ]
     },
     { 
-      title: 'Wniebogłosy (2025 r.)', 
+      title: 'Wniebogłosy (VI 2025 r.)', 
       show: false,
       links: [
         { name: 'Film 1', url:'https://drive.google.com/file/d/1RD5D9Op3MbeZHNNukB8idsmLiLOQyHix/view?usp=sharing'},
@@ -87,14 +95,35 @@ export class AppComponent {
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/x7qcuRwbpNFf89q76'}
       ]
     },
+
+
     { 
-      title: 'Spotkania w salce (2025 r.)', 
+      title: 'Spotkania wspólnoty (2025 r.)', 
       show: false,
-      links: [
-        { name: 'Album zdjęć (30 IX)', url: 'https://photos.app.goo.gl/hQyN3K1tTqvJrxAs9' },
-        {
-          name: 'Podsumowanie spotkania (30 IX)',
-          text: `
+      meetings: 
+      [
+        { date: '20 IX 2025 Kiełczów',
+          show: false,
+          links: [  
+
+            { name: 'Zdjęcia', url: 'https://photos.app.goo.gl/24qSGVTj46433Xt46' },
+            {
+              name: 'opis',
+              text: `spotkanie u Eli i Marka`,
+              show: false,
+              protected: false
+            }
+          ]
+        },
+
+
+        { date: '30 IX 2025 salka',
+          show: false,
+          links: [
+            { name: 'Zdjęcia', url: 'https://photos.app.goo.gl/hQyN3K1tTqvJrxAs9' },
+            {
+              name: 'opis',
+              text: `
 A było to dnia dzisiejszego, kiedy po mszy świętej zgromadziła się nasza czcigodna wspólnota w skromnej, aczkolwiek wonnej salce parafialnej.
 Na wstępie ksiądz proboszcz, jako pasterz surowy, rzekł do nas słowa karcenia:  
 „Czemuż to drzwi otwarte, a okna rozwiane, skoro na dworze ziąb, a w salce klimat jak w piwnicy średniowiecznej?”.  
@@ -111,16 +140,26 @@ Choć święci patrzyli z politowaniem, my z radością dopasowywaliśmy stroje 
 🏡 Gdy wszystkie sprawy doczesne i duchowe zostały dokonane, rozeszliśmy się w pokoju do domów swoich, zostawiając salkę z jej zapachem i wspomnieniem słodkiej agapy 🍰.
 Tak było!
 `,
+              show: false,
+              protected: true
+            }
+          ]
+        },
+
+        { date: '07 X 2025 kościół',
           show: false,
-          protected: true
+          links: [  
+
+            { name: 'Zdjęcie', url: 'https://drive.google.com/file/d/1x0PNbdJCRfBZIb3jsBZkXBLH6WfXkvWm/view?usp=sharing' },
+            { name: 'Film 1', url:'https://drive.google.com/file/d/1RGL-CwDoKONNwqyaucm9hQd1hu0tUCdq/view?usp=sharing'},
+            {
+              name: 'opis',
+              text: `Święto Matki Bożej Różańcowej czczone jest 7 października. Dzień ten jest rocznicą bitwy pod Lepanto (1571), w której państwa Świętej Ligi skupione wokół Państwa Kościelnego pokonały flotę Imperium Osmańskiego. Papież Pius V ogłosił w 1572 roku ten dzień świętem Matki Bożej Zwycięskiej.`,
+              show: false,
+              protected: false
+            }
+          ]
         }
-      ]
-    }, 
-    { 
-      title: 'Spotkania różne (2025 r.)', 
-      show: false,
-      links: [
-        { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/24qSGVTj46433Xt46' }
       ]
     }
   ];
@@ -153,10 +192,11 @@ Tak było!
     }
   }
 
-  // --- ROZWIJANIE EVENTÓW ---
-  toggle(item: Item) {
-    item.show = !item.show;
-  }
+// --- ROZWIJANIE EVENTÓW ---
+toggle(obj: { show: boolean }) {
+  obj.show = !obj.show;
+}
+
 
   // --- CHRONIONE TEKSTY ---
   toggleLink(link: Link) {
