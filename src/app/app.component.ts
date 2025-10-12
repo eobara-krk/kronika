@@ -95,6 +95,35 @@ export class AppComponent {
         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/x7qcuRwbpNFf89q76'}
       ]
     },
+        { 
+      title: 'Katedra Wrocławska - msza św. -Błogosławione Paschalis i IX towarzyszek (X 2025 r.)', 
+      show: false,
+      links: [
+        { name: 'Film 1', url:'https://drive.google.com/file/d/1iWIGDrsbLOYHRafsJKCLoyaEKH0np8Rv/view?usp=sharing'},
+        { name: 'Film 2', url:'https://drive.google.com/file/d/1Jh9ln3ijJduJ-NFsFMsv9SZOBs3KZsmg/view?usp=sharing'},
+        { name: 'Film 3', url:'https://drive.google.com/file/d/1wn6xPzzqDEPAQ0ObtKl_be3btkFLtBDC/view?usp=sharing'},
+        { name: 'Film 4', url:'https://drive.google.com/file/d/1Y4Kd2HV-ztTFVbBbXvpC3K7CFcMG4opU/view?usp=sharing'},
+        { name: 'Film 5', url:'https://drive.google.com/file/d/1_qvVR4R8zORM-AUaoRORnIVIr35vyb3l/view?usp=sharing'},
+        { name: 'Film 6', url:'https://drive.google.com/file/d/13_rdAXVwKvr_iUrMH3VKFt1Y6Nd_aWMK/view?usp=sharing'},
+        { name: 'Zdjęcia', url: 'https://photos.app.goo.gl/gN626K9SJMqcSdJXA'},
+        { name: 'Opis', text: `🕊 Okoliczności męczeństwa
+
+W maju 1945 r., podczas przesuwania się linii frontu i wkroczenia żołnierzy Armii Czerwonej, siostry elżbietanki były wielokrotnie szykanowane, zagrożone i brutalnie traktowane. 
+11 maja 1945 r. Siostra Maria Paschalis została zaatakowana przez żołnierza radzieckiego, który chciał ją zmusić do uległości. Ona odmówiła, powołując się na swoje powołanie zakonne i czystość, i została postrzelona. 
+Zmarła następnego dnia, 12 maja 1945 r., w szpitalu w Nysie.
+Pozostałe siostry poniosły śmierć w różnych miejscach i w różnych miesiącach pierwszej połowy 1945 r. w rejonie Śląska i Czech. 
+Imiona tych dziewięciu towarzyszek:
+Edelburgis, Rosaria, Adela, Sabina, Melusja, Sapientia, Adelheidis, Felicitas, Acutina
+
+⛪ Beatyfikacja i kult
+Proces beatyfikacyjny rozpoczął się na szczeblu diecezjalnym 25 listopada 2011 r. w archikatedrze we Wrocławiu. 
+Proces diecezjalny został formalnie zamknięty 26 września 2015 r., a akta przesłano do Rzymu Kongregacji Spraw Kanonizacyjnych. 
+19 czerwca 2021 r. papież Franciszek podpisał dekret o męczeństwie Marii Paschalis i jej towarzyszek, co umożliwiło ich beatyfikację. 
+Beatyfikacja odbyła się 11 czerwca 2022 r. w Archikatedrze św. Jana Chrzciciela we Wrocławiu, pod przewodnictwem kard. Marcello Semeraro, delegata papieskiego. 
+Od 11 maja obchodzone jest liturgiczne wspomnienie błogosławionej Marii Paschalis i jej dziewięciu Towarzyszek. ` 
+}
+      ]
+    },
 
 
     { 
