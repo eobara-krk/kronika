@@ -36,6 +36,13 @@ interface Item {
 })
 export class AppComponent {
   items: Item[] = [
+     { 
+      title: 'spotkania różne Sylwester, bal przebierańców, grill i inne', 
+      show: false,
+      links: [
+        { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/UMSnLEitBRwq5MmH6' }
+      ]
+    },
     { 
       title: 'Lewin Kłodzki rekolekcje (różne lata)', 
       show: false,
