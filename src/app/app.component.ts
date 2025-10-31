@@ -159,6 +159,16 @@ Od 11 maja obchodzone jest liturgiczne wspomnienie błogosławionej Marii Pascha
           type: 'opis'
          }      ]
     },
+        { 
+      title: 'Modlitwa z Wszystkimi Świętymi ( X 2025 r.)', 
+      show: false,
+      links: [
+         { name: 'Album zdjęć', url: 'https://photos.app.goo.gl/EikGRmr5kX8UApFEA', type: 'foto'},
+        { name: 'Litaia do Wszystkich Świętych', url:'https://drive.google.com/file/d/1K0nhdbnsW8RtbGMiSVM_dphXb-n_MJMj/view?usp=sharing', type: 'film'},
+        { name: 'Taki duży, taki maly', url:'https://drive.google.com/file/d/1CxbjZ68Z-2xW2m8YcZ2Dtfl4IOJQfpJI/view?usp=sharing', type: 'film'},
+        { name: 'Niechaj Cię Panie', url:'https://drive.google.com/file/d/1PYIQdijGi_mxjlzalemwnHj2jcI3_iye/view?usp=drive_link', type: 'film'},
+      ]
+    },
 
     { 
       title: 'Spotkania wspólnoty (2025 r.)', 
